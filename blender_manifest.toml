@@ -1,0 +1,18 @@
+schema_version = "1.2.0"
+
+id = "skbonegen"
+name = "SK Bone Generator"
+version = "1.2.0"
+tagline = "Generate bones along selected vertices"
+maintainer = "TessenSerizawa"
+type = "add-on"
+
+website = "https://github.com/TessenSerizawa/SKBoneGenn"
+
+tags = ["Rigging", "Mesh"]
+
+blender_version_min = "5.2.0"
+
+license = [
+  "SPDX:MIT",
+]

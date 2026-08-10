@@ -1,5 +1,7 @@
 import bpy
-from .op_bone_gen import SkBoneGenOperator
+
+from .op_bone_gen import SKBONEGEN_OT_bone_gen
+
 
 class VIEW3D_PT_SkBoneGenPanel(bpy.types.Panel):
     bl_idname = "VIEW3D_PT_SkBoneGenPanel"
@@ -10,9 +12,14 @@ class VIEW3D_PT_SkBoneGenPanel(bpy.types.Panel):
 
     @classmethod
     def poll(cls, context):
-        ob = context.active_object
-        return (ob and ob.type == 'MESH' and context.mode == 'EDIT_MESH')
+        obj = context.active_object
+        return obj is not None and obj.type == 'MESH' and context.mode == 'EDIT_MESH'
 
     def draw(self, context):
         layout = self.layout
-        layout.operator(SkBoneGenOperator.bl_idname, text="Gen")
+        layout.operator(SKBONEGEN_OT_bone_gen.bl_idname, text="Gen", icon='BONE_DATA')
+
+
+def menu_func(self, context):
+    self.layout.separator()
+    self.layout.operator(SKBONEGEN_OT_bone_gen.bl_idname, text="SKBoneGen", icon='BONE_DATA')
